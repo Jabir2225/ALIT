@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses & Programs | ALIT</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 50%, #00d4ff 100%);
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .course-category-section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        .course-category-section:nth-child(even) {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.03) 0%, rgba(0, 212, 255, 0.03) 100%);
+        }
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .category-header h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #1e3a5f, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        .category-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .course-detail-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .course-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #1e3a5f, #00d4ff);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+        .course-detail-card:hover::before {
+            transform: scaleY(1);
+        }
+        .course-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(30, 58, 95, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        .course-code {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e3a5f, #2d5a8a);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);
+        }
+        .course-detail-card h3 {
+            font-size: 1.75rem;
+            color: #1e3a5f;
+            margin-bottom: 1rem;
+        }
+        .course-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.05), rgba(0, 212, 255, 0.05));
+            border-radius: 15px;
+        }
+        .course-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .course-info-item i {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .course-info-item strong {
+            color: #1e3a5f;
+            display: block;
+        }
+        .course-info-item span {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .course-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+        .course-cta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .btn-enquire {
+            background: linear-gradient(135deg, #1e3a5f, #2d5a8a);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-enquire:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(30, 58, 95, 0.3);
+        }
+        .btn-download {
+            background: white;
+            color: #1e3a5f;
+            padding: 0.875rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #1e3a5f;
+            cursor: pointer;
+        }
+        .btn-download:hover {
+            background: #1e3a5f;
+            color: white;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header" id="mainHeader">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <a href="tel:+61399175018" class="contact-item"><i class="fas fa-phone"></i> <span>(03) 9917 5018</span></a>
+                        <a href="mailto:info@alit.edu.au" class="contact-item"><i class="fas fa-envelope"></i> <span>info@alit.edu.au</span></a>
+                    </div>
+                    <div class="top-bar-right">
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/alit.edu.au" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/aliteduau" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/aliteduau/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/aliteduau/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@aliteduau" target="_blank"><i class="fab fa-youtube"></i></a>
+                        </div>
+                        <div class="header-actions">
+                            <a href="#student-portal" class="btn-login">Student Portal</a>
+                            <a href="admissions.html" class="btn-apply">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo"><a href="../index.html"><span class="logo-text">ALIT</span></a></div>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><span></span><span></span><span></span></button>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li class="has-dropdown"><a href="courses.html" class="active">Courses <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="courses.html#security">Security Services</a></li>
+                                <li><a href="courses.html#first-aid">First Aid</a></li>
+                                <li><a href="courses.html#community">Community Services</a></li>
+                                <li><a href="courses.html#hospitality">Hospitality</a></li>
+                                <li><a href="courses.html#business">Business Services</a></li>
+                                <li><a href="courses.html#ict">Information Technology</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown"><a href="student-life.html">Student Information <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="admissions.html#how-to-apply">How To Apply</a></li>
+                                <li><a href="admissions.html#enrolment-form">Enrolment Form</a></li>
+                                <li><a href="support.html">Student Support Service</a></li>
+                                <li><a href="support.html#policy">Policy & Procedure</a></li>
+                                <li><a href="support.html#downloads">Downloads</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="news-blogs.html" class="nav-highlight">News & Blogs</a></li>
+                        <li><a href="contact.html">Contact us</a></li>
+                    </ul>
+                    <div class="nav-phone-button">
+                        <a href="tel:+61399175018" class="phone-btn">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(03) 9917 5018</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Courses & Programs</h1>
+                <p>Discover our comprehensive range of nationally recognized qualifications designed to advance your career and unlock your potential.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Services -->
+    <section id="security" class="course-category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2><i class="fas fa-shield-alt"></i> Security Services</h2>
+                <p>Build a career in security with industry-recognized qualifications</p>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code">CPP20218</span>
+                <h3>Certificate II in Security Operations (Victoria)</h3>
+                <p class="course-description">Entry-level course for the security industry, covering crowd control and risk management. This qualification provides the foundational skills needed to work in various security roles across Victoria.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>6 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Location</strong>
+                            <span>Melbourne Campus</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Certificate II</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <strong>Recognition</strong>
+                            <span>Nationally Recognized</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code">CPP20218</span>
+                <h3>Certificate II in Security Operations (NSW)</h3>
+                <p class="course-description">Entry-level course for the security industry, covering crowd control and risk management. This qualification provides the foundational skills needed to work in various security roles across New South Wales.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>6 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Location</strong>
+                            <span>Parramatta Campus</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Certificate II</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <strong>Recognition</strong>
+                            <span>Nationally Recognized</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- First Aid -->
+    <section id="first-aid" class="course-category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2><i class="fas fa-heartbeat"></i> First Aid</h2>
+                <p>Essential life-saving skills for everyone</p>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #ff6b6b, #ee5a6f);">First Aid & CPR</span>
+                <h3>First Aid & CPR Training</h3>
+                <p class="course-description">ALIT offers industry-recognised First Aid and CPR training across Melbourne (VIC) and Parramatta (NSW) to ensure you're prepared for any emergency. This course is essential for workplace safety and personal preparedness.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>1 day</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Location</strong>
+                            <span>Both Campuses</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <strong>Certification</strong>
+                            <span>Valid 3 Years</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <strong>Format</strong>
+                            <span>Hands-on Training</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Services -->
+    <section id="community" class="course-category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2><i class="fas fa-hands-helping"></i> Community Services</h2>
+                <p>Make a difference in people's lives</p>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #51cf66, #37b24d);">CHC33021</span>
+                <h3>Certificate III in Individual Support</h3>
+                <p class="course-description">The ideal starting point for those seeking a career in aged care, disability, or community services. This qualification provides the skills to support individuals in various care settings.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>12 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Certificate III</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <strong>Career Path</strong>
+                            <span>Aged Care, Disability</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #51cf66, #37b24d);">CHC43015</span>
+                <h3>Certificate IV in Ageing Support</h3>
+                <p class="course-description">Prepare for a rewarding career in aged care with our nationally recognized Certificate IV in Ageing Support. Develop advanced skills in providing person-centered care to elderly individuals.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>12 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Certificate IV</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #51cf66, #37b24d);">CHC43121</span>
+                <h3>Certificate IV in Disability Support</h3>
+                <p class="course-description">Designed for individuals who want to make a real difference in the lives of people with disability. Learn to provide person-centered support and empower individuals to achieve their goals.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>12 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Certificate IV</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #51cf66, #37b24d);">CHC52025</span>
+                <h3>Diploma of Community Services (Case Management)</h3>
+                <p class="course-description">This qualification reflects the role of community services workers involved in the delivery, management and coordination of person-centred services to individuals, groups, and communities.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>18 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Diploma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hospitality -->
+    <section id="hospitality" class="course-category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2><i class="fas fa-utensils"></i> Tourism, Travel and Hospitality</h2>
+                <p>Turn your passion for food and service into a career</p>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #ff6b6b, #ee5a6f);">SIT30821</span>
+                <h3>Certificate III in Commercial Cookery</h3>
+                <p class="course-description">Designed for those who want to turn their passion for food into a professional career. Learn essential culinary skills and techniques in our state-of-the-art kitchen facilities.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>12 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Certificate III</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #ff6b6b, #ee5a6f);">SIT40521</span>
+                <h3>Certificate IV in Kitchen Management</h3>
+                <p class="course-description">Designed for individuals seeking advanced skills in culinary management, supervision, and operational responsibilities within commercial kitchens.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>12 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Certificate IV</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #ff6b6b, #ee5a6f);">SIT50422</span>
+                <h3>Diploma of Hospitality Management</h3>
+                <p class="course-description">Designed for individuals seeking advanced leadership and management skills in the hospitality industry. Prepare for senior roles in hotels, restaurants, and event management.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>18 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Diploma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Services -->
+    <section id="business" class="course-category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2><i class="fas fa-briefcase"></i> Business Services</h2>
+                <p>Develop leadership and management excellence</p>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #00d4ff, #0099cc);">BSB50120</span>
+                <h3>Diploma of Business (Operations)</h3>
+                <p class="course-description">Focuses on business operations, leadership, and project management. Develop the skills needed to manage business operations effectively and lead teams to success.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>12 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Diploma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #00d4ff, #0099cc);">BSB60420</span>
+                <h3>Advanced Diploma of Leadership and Management</h3>
+                <p class="course-description">Develops high-level management and leadership skills. Perfect for aspiring executives and senior managers looking to advance their careers.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>18 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Advanced Diploma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Technology -->
+    <section id="ict" class="course-category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2><i class="fas fa-laptop-code"></i> Information and Communications Technology</h2>
+                <p>Build your future in the digital world</p>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #9b51e0, #7c3aed);">ICT50220</span>
+                <h3>Diploma of Information Technology</h3>
+                <p class="course-description">Covers IT systems, network security, and project management. Gain comprehensive skills in modern IT infrastructure and cybersecurity.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>12 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Diploma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+            <div class="course-detail-card">
+                <span class="course-code" style="background: linear-gradient(135deg, #9b51e0, #7c3aed);">ICT60220</span>
+                <h3>Advanced Diploma of Information Technology</h3>
+                <p class="course-description">Explores advanced topics like cybersecurity and enterprise solutions. Prepare for senior IT roles in large organizations.</p>
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Duration</strong>
+                            <span>18 months</span>
+                        </div>
+                    </div>
+                    <div class="course-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Level</strong>
+                            <span>Advanced Diploma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-cta">
+                    <button class="btn-enquire">Enquire Now</button>
+                    <button class="btn-download"><i class="fas fa-download"></i> Download Brochure</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 5rem 0; background: linear-gradient(135deg, #1e3a5f, #2d5a8a); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to Start Your Journey?</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">Join thousands of students who have transformed their careers with ALIT</p>
+            <a href="admissions.html" class="btn btn-secondary btn-large">Apply Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <h3>Australian Leading Institute of Technology</h3>
+                    </div>
+                    <p>Committed to continuously improving our quality education and preparing our graduates for employment.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/alit.edu.au" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/aliteduau" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/aliteduau/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/aliteduau/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@aliteduau" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Courses</h4>
+                    <ul class="footer-links">
+                        <li><a href="courses.html#community">CHC43015 - Certificate IV in Ageing Support</a></li>
+                        <li><a href="courses.html#community">CHC52025 - Diploma of Community Services</a></li>
+                        <li><a href="courses.html#business">BSB50120 - Diploma of Business</a></li>
+                        <li><a href="courses.html#business">BSB60420 - Advanced Diploma of Leadership and Management</a></li>
+                        <li><a href="courses.html#ict">ICT50220 - Diploma of Information Technology</a></li>
+                        <li><a href="courses.html#ict">ICT60220 - Advanced Diploma of Information Technology</a></li>
+                        <li><a href="courses.html#security">CPP20218 - Certificate II In Security Operations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Student Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="admissions.html#how-to-apply">How To Apply</a></li>
+                        <li><a href="admissions.html#enrolment-form">Enrolment Form</a></li>
+                        <li><a href="support.html">Student Support Service</a></li>
+                        <li><a href="support.html#policy">Policy & Procedure</a></li>
+                        <li><a href="support.html#downloads">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Get in Touch</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> <div><strong>Main Campus:</strong><br>500 Spencer St, West Melbourne, VIC, 3003</div></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <div><strong>NSW Campus:</strong><br>Level 6, 16-18 Wentworth Street, Parramatta NSW 2150</div></li>
+                        <li><i class="fas fa-clock"></i> <div><strong>Administrative Office Hours:</strong><br>9:00 am - 5:00 pm EST,<br>Monday - Friday</div></li>
+                        <li><i class="fas fa-envelope"></i> <div><strong>Email:</strong><br><a href="mailto:info@alit.edu.au">info@alit.edu.au</a></div></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Other Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#e-learning">E-Learning</a></li>
+                        <li><a href="news-blogs.html">News & Blogs</a></li>
+                        <li><a href="#agents">Agents</a></li>
+                    </ul>
+                    <div class="footer-social" style="margin-top: 1.5rem;">
+                        <a href="https://www.facebook.com/alit.edu.au" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/aliteduau" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/aliteduau/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/aliteduau/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@aliteduau" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-certifications">
+                    <p><strong>RTO Code:</strong> 45156</p>
+                    <p><strong>CRICOS Provider Code:</strong> 03981M</p>
+                    <p><strong>VIC Business License:</strong> Z39-528-10 S</p>
+                    <p><strong>Security Master Licence:</strong> 000109601</p>
+                </div>
+                <div class="footer-legal">
+                    <p>&copy; 2025 Australian Leading Institute of Technology. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

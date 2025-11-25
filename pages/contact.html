@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ALIT</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .contact-page {
+            padding: 4rem 0;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .contact-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(30, 58, 95, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        .contact-card i {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #1e3a5f, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+        .map-container {
+            height: 400px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header" id="mainHeader">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <a href="tel:+61399175018" class="contact-item"><i class="fas fa-phone"></i> <span>(03) 9917 5018</span></a>
+                        <a href="mailto:info@alit.edu.au" class="contact-item"><i class="fas fa-envelope"></i> <span>info@alit.edu.au</span></a>
+                    </div>
+                    <div class="top-bar-right">
+                        <div class="header-actions">
+                            <a href="#student-portal" class="btn-login">Student Portal</a>
+                            <a href="admissions.html" class="btn-apply">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo"><a href="../index.html"><span class="logo-text">ALIT</span></a></div>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><span></span><span></span><span></span></button>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li class="has-dropdown"><a href="courses.html">Courses <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="courses.html#security">Security Services</a></li>
+                                <li><a href="courses.html#first-aid">First Aid</a></li>
+                                <li><a href="courses.html#community">Community Services</a></li>
+                                <li><a href="courses.html#hospitality">Hospitality</a></li>
+                                <li><a href="courses.html#business">Business Services</a></li>
+                                <li><a href="courses.html#ict">Information Technology</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown"><a href="student-life.html">Student Information <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="admissions.html#how-to-apply">How To Apply</a></li>
+                                <li><a href="admissions.html#enrolment-form">Enrolment Form</a></li>
+                                <li><a href="support.html">Student Support Service</a></li>
+                                <li><a href="support.html#policy">Policy & Procedure</a></li>
+                                <li><a href="support.html#downloads">Downloads</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="news-blogs.html" class="nav-highlight">News & Blogs</a></li>
+                        <li><a href="contact.html" class="active">Contact us</a></li>
+                    </ul>
+                    <div class="nav-phone-button">
+                        <a href="tel:+61399175018" class="phone-btn">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(03) 9917 5018</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header-section" style="background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 50%, #00d4ff 100%); color: white; padding: 6rem 0 4rem; text-align: center; position: relative; overflow: hidden;">
+        <div class="container" style="position: relative; z-index: 1;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.2);">Contact Us</h1>
+            <p style="font-size: 1.25rem; opacity: 0.95;">We're here to help. Get in touch with us today.</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-page">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Main Campus</h3>
+                    <p>500 Spencer St<br>West Melbourne, VIC, 3003<br>Australia</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>NSW Campus</h3>
+                    <p>Level 6, 16-18 Wentworth Street<br>Parramatta NSW 2150<br>Australia</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p><a href="tel:+61399175018">(03) 9917 5018</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@alit.edu.au">info@alit.edu.au</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Office Hours</h3>
+                    <p>9:00 am - 5:00 pm EST<br>Monday - Friday</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certifications</h3>
+                    <p>RTO Code: 45156<br>CRICOS: 03981M</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Subject *</label>
+                        <select name="subject" required>
+                            <option value="">Select a subject...</option>
+                            <option value="admissions">Admissions Inquiry</option>
+                            <option value="courses">Course Information</option>
+                            <option value="international">International Students</option>
+                            <option value="support">Student Support</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="map-container">
+                <div style="text-align: center;">
+                    <i class="fas fa-map" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p>Interactive map will be embedded here</p>
+                    <p style="font-size: 0.875rem;">(Google Maps or similar service)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <h3>Australian Leading Institute of Technology</h3>
+                    </div>
+                    <p>Committed to continuously improving our quality education and preparing our graduates for employment.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/alit.edu.au" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/aliteduau" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/aliteduau/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/aliteduau/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@aliteduau" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Courses</h4>
+                    <ul class="footer-links">
+                        <li><a href="courses.html#community">CHC43015 - Certificate IV in Ageing Support</a></li>
+                        <li><a href="courses.html#community">CHC52025 - Diploma of Community Services</a></li>
+                        <li><a href="courses.html#business">BSB50120 - Diploma of Business</a></li>
+                        <li><a href="courses.html#business">BSB60420 - Advanced Diploma of Leadership and Management</a></li>
+                        <li><a href="courses.html#ict">ICT50220 - Diploma of Information Technology</a></li>
+                        <li><a href="courses.html#ict">ICT60220 - Advanced Diploma of Information Technology</a></li>
+                        <li><a href="courses.html#security">CPP20218 - Certificate II In Security Operations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Student Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="admissions.html#how-to-apply">How To Apply</a></li>
+                        <li><a href="admissions.html#enrolment-form">Enrolment Form</a></li>
+                        <li><a href="support.html">Student Support Service</a></li>
+                        <li><a href="support.html#policy">Policy & Procedure</a></li>
+                        <li><a href="support.html#downloads">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Get in Touch</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> <div><strong>Main Campus:</strong><br>500 Spencer St, West Melbourne, VIC, 3003</div></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <div><strong>NSW Campus:</strong><br>Level 6, 16-18 Wentworth Street, Parramatta NSW 2150</div></li>
+                        <li><i class="fas fa-clock"></i> <div><strong>Administrative Office Hours:</strong><br>9:00 am - 5:00 pm EST,<br>Monday - Friday</div></li>
+                        <li><i class="fas fa-envelope"></i> <div><strong>Email:</strong><br><a href="mailto:info@alit.edu.au">info@alit.edu.au</a></div></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Other Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#e-learning">E-Learning</a></li>
+                        <li><a href="news-blogs.html">News & Blogs</a></li>
+                        <li><a href="#agents">Agents</a></li>
+                    </ul>
+                    <div class="footer-social" style="margin-top: 1.5rem;">
+                        <a href="https://www.facebook.com/alit.edu.au" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/aliteduau" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/aliteduau/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/aliteduau/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@aliteduau" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-certifications">
+                    <p><strong>RTO Code:</strong> 45156</p>
+                    <p><strong>CRICOS Provider Code:</strong> 03981M</p>
+                    <p><strong>VIC Business License:</strong> Z39-528-10 S</p>
+                    <p><strong>Security Master Licence:</strong> 000109601</p>
+                </div>
+                <div class="footer-legal">
+                    <p>&copy; 2025 Australian Leading Institute of Technology. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Life | ALIT</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .page-hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 50%, #00d4ff 100%); padding: 6rem 0 4rem; color: white; text-align: center; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .service-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-icon { width: 70px; height: 70px; background: linear-gradient(135deg, #1e3a5f, #00d4ff); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+    <header class="main-header" id="mainHeader">
+        <div class="top-bar"><div class="container"><div class="top-bar-content">
+            <div class="contact-info">
+                <a href="tel:+61399175018" class="contact-item"><i class="fas fa-phone"></i> <span>(03) 9917 5018</span></a>
+                <a href="mailto:info@alit.edu.au" class="contact-item"><i class="fas fa-envelope"></i> <span>info@alit.edu.au</span></a>
+            </div>
+        </div></div></div>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo"><a href="../index.html"><span class="logo-text">ALIT</span></a></div>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><span></span><span></span><span></span></button>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li class="has-dropdown"><a href="courses.html">Courses <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="courses.html#security">Security Services</a></li>
+                                <li><a href="courses.html#first-aid">First Aid</a></li>
+                                <li><a href="courses.html#community">Community Services</a></li>
+                                <li><a href="courses.html#hospitality">Hospitality</a></li>
+                                <li><a href="courses.html#business">Business Services</a></li>
+                                <li><a href="courses.html#ict">Information Technology</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown"><a href="student-life.html" class="active">Student Information <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="admissions.html#how-to-apply">How To Apply</a></li>
+                                <li><a href="admissions.html#enrolment-form">Enrolment Form</a></li>
+                                <li><a href="support.html">Student Support Service</a></li>
+                                <li><a href="support.html#policy">Policy & Procedure</a></li>
+                                <li><a href="support.html#downloads">Downloads</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="news-blogs.html" class="nav-highlight">News & Blogs</a></li>
+                        <li><a href="contact.html">Contact us</a></li>
+                    </ul>
+                    <div class="nav-phone-button">
+                        <a href="tel:+61399175018" class="phone-btn">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(03) 9917 5018</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Student Life</h1>
+            <p style="font-size: 1.25rem;">Supporting Your Success Every Step of the Way</p>
+        </div>
+    </section>
+
+    <section style="padding: 5rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Student Support Services</h2>
+                <p class="section-subtitle">Comprehensive support to help you succeed</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-book"></i></div>
+                    <h3>Academic Support</h3>
+                    <p>Tutoring, study groups, and academic counseling to help you excel in your studies.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Career Services</h3>
+                    <p>Career counseling, resume writing, interview preparation, and job placement assistance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Wellbeing Support</h3>
+                    <p>Mental health support, counseling services, and wellness programs for all students.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-users"></i></div>
+                    <h3>Student Clubs</h3>
+                    <p>Join various student clubs and societies to connect with peers and pursue your interests.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Events & Activities</h3>
+                    <p>Regular events, workshops, and social activities to enrich your student experience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop"></i></div>
+                    <h3>Learning Resources</h3>
+                    <p>Access to libraries, online resources, and modern learning facilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <h3>Australian Leading Institute of Technology</h3>
+                    </div>
+                    <p>Committed to continuously improving our quality education and preparing our graduates for employment.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/alit.edu.au" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/aliteduau" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/aliteduau/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/aliteduau/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@aliteduau" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Courses</h4>
+                    <ul class="footer-links">
+                        <li><a href="courses.html#community">CHC43015 - Certificate IV in Ageing Support</a></li>
+                        <li><a href="courses.html#community">CHC52025 - Diploma of Community Services</a></li>
+                        <li><a href="courses.html#business">BSB50120 - Diploma of Business</a></li>
+                        <li><a href="courses.html#business">BSB60420 - Advanced Diploma of Leadership and Management</a></li>
+                        <li><a href="courses.html#ict">ICT50220 - Diploma of Information Technology</a></li>
+                        <li><a href="courses.html#ict">ICT60220 - Advanced Diploma of Information Technology</a></li>
+                        <li><a href="courses.html#security">CPP20218 - Certificate II In Security Operations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Student Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="admissions.html#how-to-apply">How To Apply</a></li>
+                        <li><a href="admissions.html#enrolment-form">Enrolment Form</a></li>
+                        <li><a href="support.html">Student Support Service</a></li>
+                        <li><a href="support.html#policy">Policy & Procedure</a></li>
+                        <li><a href="support.html#downloads">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Get in Touch</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> <div><strong>Main Campus:</strong><br>500 Spencer St, West Melbourne, VIC, 3003</div></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <div><strong>NSW Campus:</strong><br>Level 6, 16-18 Wentworth Street, Parramatta NSW 2150</div></li>
+                        <li><i class="fas fa-clock"></i> <div><strong>Administrative Office Hours:</strong><br>9:00 am - 5:00 pm EST,<br>Monday - Friday</div></li>
+                        <li><i class="fas fa-envelope"></i> <div><strong>Email:</strong><br><a href="mailto:info@alit.edu.au">info@alit.edu.au</a></div></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Other Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#e-learning">E-Learning</a></li>
+                        <li><a href="news-blogs.html">News & Blogs</a></li>
+                        <li><a href="#agents">Agents</a></li>
+                    </ul>
+                    <div class="footer-social" style="margin-top: 1.5rem;">
+                        <a href="https://www.facebook.com/alit.edu.au" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/aliteduau" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/aliteduau/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/aliteduau/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@aliteduau" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-certifications">
+                    <p><strong>RTO Code:</strong> 45156</p>
+                    <p><strong>CRICOS Provider Code:</strong> 03981M</p>
+                    <p><strong>VIC Business License:</strong> Z39-528-10 S</p>
+                    <p><strong>Security Master Licence:</strong> 000109601</p>
+                </div>
+                <div class="footer-legal">
+                    <p>&copy; 2025 Australian Leading Institute of Technology. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>
+

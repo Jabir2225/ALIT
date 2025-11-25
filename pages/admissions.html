@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | ALIT</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .timeline-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin: 0 2rem;
+        }
+        .timeline-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            z-index: 1;
+        }
+        .application-form-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+        }
+        .form-step {
+            display: none;
+        }
+        .form-step.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        .file-upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        .file-upload-area:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (same structure as index.html) -->
+    <header class="main-header" id="mainHeader">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <a href="tel:+61399175018" class="contact-item"><i class="fas fa-phone"></i> <span>(03) 9917 5018</span></a>
+                        <a href="mailto:info@alit.edu.au" class="contact-item"><i class="fas fa-envelope"></i> <span>info@alit.edu.au</span></a>
+                    </div>
+                    <div class="top-bar-right">
+                        <div class="header-actions">
+                            <a href="#student-portal" class="btn-login">Student Portal</a>
+                            <a href="#apply-now" class="btn-apply">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo"><a href="../index.html"><span class="logo-text">ALIT</span></a></div>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><span></span><span></span><span></span></button>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li class="has-dropdown"><a href="courses.html">Courses <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="courses.html#security">Security Services</a></li>
+                                <li><a href="courses.html#first-aid">First Aid</a></li>
+                                <li><a href="courses.html#community">Community Services</a></li>
+                                <li><a href="courses.html#hospitality">Hospitality</a></li>
+                                <li><a href="courses.html#business">Business Services</a></li>
+                                <li><a href="courses.html#ict">Information Technology</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown"><a href="student-life.html" class="active">Student Information <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="admissions.html#how-to-apply">How To Apply</a></li>
+                                <li><a href="admissions.html#enrolment-form">Enrolment Form</a></li>
+                                <li><a href="support.html">Student Support Service</a></li>
+                                <li><a href="support.html#policy">Policy & Procedure</a></li>
+                                <li><a href="support.html#downloads">Downloads</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="news-blogs.html" class="nav-highlight">News & Blogs</a></li>
+                        <li><a href="contact.html">Contact us</a></li>
+                    </ul>
+                    <div class="nav-phone-button">
+                        <a href="tel:+61399175018" class="phone-btn">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(03) 9917 5018</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header-section" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; padding: 4rem 0; text-align: center;">
+        <div class="container">
+            <h1>Admissions</h1>
+            <p style="font-size: 1.25rem; opacity: 0.9;">Start your journey with ALIT. Simple, straightforward application process.</p>
+        </div>
+    </section>
+
+    <!-- Step-by-Step Timeline -->
+    <section id="how-to-apply" style="padding: 4rem 0; background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How to Apply</h2>
+                <p class="section-subtitle">Follow these simple steps to begin your application</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-content">
+                            <h3>Choose Your Course</h3>
+                            <p>Browse our courses and select the program that aligns with your career goals.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-content">
+                            <h3>Check Entry Requirements</h3>
+                            <p>Review the entry requirements for your chosen course, including academic qualifications and English proficiency.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-content">
+                            <h3>Submit Application</h3>
+                            <p>Complete the online application form and upload required documents (academic transcripts, English test results, passport copy).</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-content">
+                            <h3>Application Review</h3>
+                            <p>Our admissions team will review your application within 5-7 business days.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">5</div>
+                        <div class="timeline-content">
+                            <h3>Receive Offer Letter</h3>
+                            <p>If successful, you'll receive a Letter of Offer with course details and fees.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">6</div>
+                        <div class="timeline-content">
+                            <h3>Accept & Pay Fees</h3>
+                            <p>Accept the offer and pay the required fees to secure your place.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">7</div>
+                        <div class="timeline-content">
+                            <h3>Visa Application (International Students)</h3>
+                            <p>Apply for your student visa using the Confirmation of Enrolment (CoE) provided by ALIT.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">8</div>
+                        <div class="timeline-content">
+                            <h3>Orientation & Start</h3>
+                            <p>Attend orientation and begin your studies at ALIT!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entry Requirements -->
+    <section id="requirements" style="padding: 4rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Entry Requirements</h2>
+            </div>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Academic Requirements</h3>
+                    <p>Completion of Year 12 or equivalent. Some courses may require specific prerequisites.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-language"></i></div>
+                    <h3>English Proficiency</h3>
+                    <p>IELTS 5.5 or equivalent for most courses. Some programs may require higher scores.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-passport"></i></div>
+                    <h3>Visa Requirements</h3>
+                    <p>International students must have a valid student visa (subclass 500) to study in Australia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Application Form -->
+    <section id="apply-now" style="padding: 4rem 0; background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Online Application Form</h2>
+                <p class="section-subtitle">Complete the form below to start your application</p>
+            </div>
+            <div class="application-form-container">
+                <form id="applicationForm">
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-step active" id="step1">
+                        <h3 style="margin-bottom: 1.5rem;">Personal Information</h3>
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth *</label>
+                            <input type="date" name="dob" required>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" disabled>Previous</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Course Selection -->
+                    <div class="form-step" id="step2">
+                        <h3 style="margin-bottom: 1.5rem;">Course Selection</h3>
+                        <div class="form-group">
+                            <label>Select Course *</label>
+                            <select name="course" required>
+                                <option value="">Choose a course...</option>
+                                <option value="security-vic">CPP20218 - Certificate II in Security Operations (VIC)</option>
+                                <option value="security-nsw">CPP20218 - Certificate II in Security Operations (NSW)</option>
+                                <option value="first-aid">First Aid & CPR</option>
+                                <option value="individual-support">CHC33021 - Certificate III in Individual Support</option>
+                                <option value="ageing-support">CHC43015 - Certificate IV in Ageing Support</option>
+                                <option value="disability-support">CHC43121 - Certificate IV in Disability Support</option>
+                                <option value="community-services">CHC52025 - Diploma of Community Services</option>
+                                <option value="commercial-cookery">SIT30821 - Certificate III in Commercial Cookery</option>
+                                <option value="kitchen-management">SIT40521 - Certificate IV in Kitchen Management</option>
+                                <option value="hospitality-management">SIT50422 - Diploma of Hospitality Management</option>
+                                <option value="business">BSB50120 - Diploma of Business</option>
+                                <option value="leadership">BSB60420 - Advanced Diploma of Leadership and Management</option>
+                                <option value="it-diploma">ICT50220 - Diploma of Information Technology</option>
+                                <option value="it-advanced">ICT60220 - Advanced Diploma of Information Technology</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Start Date *</label>
+                            <input type="date" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Study Mode *</label>
+                            <select name="studyMode" required>
+                                <option value="">Select study mode...</option>
+                                <option value="on-campus">On-Campus</option>
+                                <option value="online">Online</option>
+                                <option value="hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(1)">Previous</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Documents -->
+                    <div class="form-step" id="step3">
+                        <h3 style="margin-bottom: 1.5rem;">Upload Documents</h3>
+                        <div class="form-group">
+                            <label>Academic Transcripts *</label>
+                            <div class="file-upload-area" onclick="document.getElementById('transcripts').click()">
+                                <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                                <p>Click to upload or drag and drop</p>
+                                <input type="file" id="transcripts" name="transcripts" accept=".pdf,.doc,.docx" style="display: none;" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>English Proficiency Test Results</label>
+                            <div class="file-upload-area" onclick="document.getElementById('englishTest').click()">
+                                <i class="fas fa-file-upload" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                                <p>Click to upload</p>
+                                <input type="file" id="englishTest" name="englishTest" accept=".pdf,.doc,.docx" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Passport Copy (International Students) *</label>
+                            <div class="file-upload-area" onclick="document.getElementById('passport').click()">
+                                <i class="fas fa-id-card" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                                <p>Click to upload</p>
+                                <input type="file" id="passport" name="passport" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(2)">Previous</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(4)">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review & Submit -->
+                    <div class="form-step" id="step4">
+                        <h3 style="margin-bottom: 1.5rem;">Review & Submit</h3>
+                        <div id="formReview"></div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(3)">Previous</button>
+                            <button type="submit" class="btn btn-primary">Submit Application</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fees & Scholarships -->
+    <section id="fees" style="padding: 4rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Fees & Scholarships</h2>
+            </div>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <h3>Tuition Fees</h3>
+                    <p>Course fees vary by program. Contact us for detailed fee information.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-gift"></i></div>
+                    <h3>Scholarships Available</h3>
+                    <p>We offer various scholarships for eligible domestic and international students.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-credit-card"></i></div>
+                    <h3>Payment Plans</h3>
+                    <p>Flexible payment options available to help manage your education costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            if (step === 4) {
+                reviewForm();
+            }
+        }
+        function prevStep(step) {
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+        }
+        function reviewForm() {
+            const form = document.getElementById('applicationForm');
+            const formData = new FormData(form);
+            const review = document.getElementById('formReview');
+            review.innerHTML = '<p>Please review your information before submitting...</p>';
+        }
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your application has been submitted. We will contact you shortly.');
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <h3>Australian Leading Institute of Technology</h3>
+                    </div>
+                    <p>Committed to continuously improving our quality education and preparing our graduates for employment.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/alit.edu.au" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/aliteduau" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/aliteduau/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/aliteduau/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@aliteduau" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Courses</h4>
+                    <ul class="footer-links">
+                        <li><a href="courses.html#community">CHC43015 - Certificate IV in Ageing Support</a></li>
+                        <li><a href="courses.html#community">CHC52025 - Diploma of Community Services</a></li>
+                        <li><a href="courses.html#business">BSB50120 - Diploma of Business</a></li>
+                        <li><a href="courses.html#business">BSB60420 - Advanced Diploma of Leadership and Management</a></li>
+                        <li><a href="courses.html#ict">ICT50220 - Diploma of Information Technology</a></li>
+                        <li><a href="courses.html#ict">ICT60220 - Advanced Diploma of Information Technology</a></li>
+                        <li><a href="courses.html#security">CPP20218 - Certificate II In Security Operations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Student Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="admissions.html#how-to-apply">How To Apply</a></li>
+                        <li><a href="admissions.html#enrolment-form">Enrolment Form</a></li>
+                        <li><a href="support.html">Student Support Service</a></li>
+                        <li><a href="support.html#policy">Policy & Procedure</a></li>
+                        <li><a href="support.html#downloads">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Get in Touch</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> <div><strong>Main Campus:</strong><br>500 Spencer St, West Melbourne, VIC, 3003</div></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <div><strong>NSW Campus:</strong><br>Level 6, 16-18 Wentworth Street, Parramatta NSW 2150</div></li>
+                        <li><i class="fas fa-clock"></i> <div><strong>Administrative Office Hours:</strong><br>9:00 am - 5:00 pm EST,<br>Monday - Friday</div></li>
+                        <li><i class="fas fa-envelope"></i> <div><strong>Email:</strong><br><a href="mailto:info@alit.edu.au">info@alit.edu.au</a></div></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Other Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#e-learning">E-Learning</a></li>
+                        <li><a href="news-blogs.html">News & Blogs</a></li>
+                        <li><a href="#agents">Agents</a></li>
+                    </ul>
+                    <div class="footer-social" style="margin-top: 1.5rem;">
+                        <a href="https://www.facebook.com/alit.edu.au" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/aliteduau" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/aliteduau/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/aliteduau/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@aliteduau" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-certifications">
+                    <p><strong>RTO Code:</strong> 45156</p>
+                    <p><strong>CRICOS Provider Code:</strong> 03981M</p>
+                    <p><strong>VIC Business License:</strong> Z39-528-10 S</p>
+                    <p><strong>Security Master Licence:</strong> 000109601</p>
+                </div>
+                <div class="footer-legal">
+                    <p>&copy; 2025 Australian Leading Institute of Technology. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
